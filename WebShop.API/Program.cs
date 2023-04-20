@@ -21,3 +21,5 @@ var app = builder
 app.UseSerilogRequestLogging();
 
 app.Run();
+
+public partial class Program { }

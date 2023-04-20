@@ -3,7 +3,9 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using WebShop.Application.Behaviors;
 using WebShop.Application.Common.Dates;
+using WebShop.Application.Contracts.Services;
 using WebShop.Application.Contracts.Persistence;
+using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem.StockServices;
 
 namespace WebShop.Application
 {
@@ -18,6 +20,7 @@ namespace WebShop.Application
             var applicationAssembly = typeof(AssemblyReference).Assembly;
             services.AddValidatorsFromAssembly(applicationAssembly);
             services.AddScoped(typeof(IDateService), typeof(DateService));
+            services.AddScoped(typeof(IStockService), typeof(StockService));
 
             return services;
         }

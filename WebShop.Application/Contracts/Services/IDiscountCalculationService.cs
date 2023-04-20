@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebShop.Application.Features.Orders.Commands;
 
-namespace WebShop.Application.Contracts.CalculationServices
+namespace WebShop.Application.Contracts.Services
 {
     public interface IDiscountCalculationService
     {

@@ -4,6 +4,6 @@ namespace WebShop.Application.Features.Orders.Commands.Factory
 {
     public interface IOrderFactory
     {
-        Task<Order> CreateAsync(CreateOrderCommand createOrderCommand);
+        Task<Order> CreateOrderAsync(CreateOrderCommand createOrderCommand);
     }
 }

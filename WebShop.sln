@@ -13,17 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2F3DC2EC-9266-4E7F-8160-FD9E07946247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Domain", "WebShop.Domain\WebShop.Domain.csproj", "{927FB166-ED4A-42AE-9C4C-5706100F2FA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Domain", "WebShop.Domain\WebShop.Domain.csproj", "{927FB166-ED4A-42AE-9C4C-5706100F2FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Application", "WebShop.Application\WebShop.Application.csproj", "{5DC1900C-E04E-435E-AE8A-BE14509C4547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Application", "WebShop.Application\WebShop.Application.csproj", "{5DC1900C-E04E-435E-AE8A-BE14509C4547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Persistence", "WebShop.Persistence\WebShop.Persistence.csproj", "{35039CCA-8BD9-4A2A-95A3-363A04ABCA6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Persistence", "WebShop.Persistence\WebShop.Persistence.csproj", "{35039CCA-8BD9-4A2A-95A3-363A04ABCA6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.API", "WebShop.API\WebShop.API.csproj", "{DCE939A6-A9B3-4CA6-B5EA-0C77D30EE3CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.API", "WebShop.API\WebShop.API.csproj", "{DCE939A6-A9B3-4CA6-B5EA-0C77D30EE3CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Infrastructure", "WebShop.Infrastructure\WebShop.Infrastructure.csproj", "{54B7810A-BFFA-43C9-9001-F928DFE64F10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Infrastructure", "WebShop.Infrastructure\WebShop.Infrastructure.csproj", "{54B7810A-BFFA-43C9-9001-F928DFE64F10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Appllication.UnitTests", "WebShop.Appllication.UnitTests\WebShop.Appllication.UnitTests.csproj", "{27BF4912-8278-4A72-ADED-F822DC4F2102}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Appllication.UnitTests", "WebShop.Appllication.UnitTests\WebShop.Appllication.UnitTests.csproj", "{27BF4912-8278-4A72-ADED-F822DC4F2102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.API.IntegrationTests", "WebShop.API.IntegrationTests\WebShop.API.IntegrationTests.csproj", "{271A03B4-3A4F-4304-9AEA-6131D5A0C59D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{27BF4912-8278-4A72-ADED-F822DC4F2102}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27BF4912-8278-4A72-ADED-F822DC4F2102}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27BF4912-8278-4A72-ADED-F822DC4F2102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271A03B4-3A4F-4304-9AEA-6131D5A0C59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271A03B4-3A4F-4304-9AEA-6131D5A0C59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271A03B4-3A4F-4304-9AEA-6131D5A0C59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271A03B4-3A4F-4304-9AEA-6131D5A0C59D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{DCE939A6-A9B3-4CA6-B5EA-0C77D30EE3CD} = {6D8D862C-7B95-4697-BCFB-7DA346698794}
 		{54B7810A-BFFA-43C9-9001-F928DFE64F10} = {9426D141-9986-46A7-9ADB-4A03D6D8BB26}
 		{27BF4912-8278-4A72-ADED-F822DC4F2102} = {2F3DC2EC-9266-4E7F-8160-FD9E07946247}
+		{271A03B4-3A4F-4304-9AEA-6131D5A0C59D} = {2F3DC2EC-9266-4E7F-8160-FD9E07946247}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB42F0D8-44B9-47DB-82FA-E0731527FD70}

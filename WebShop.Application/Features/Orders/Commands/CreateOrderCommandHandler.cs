@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebShop.Application.Common.Dates;
-using WebShop.Application.Contracts.CalculationServices;
+using WebShop.Application.Contracts.Services;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands.CalculationServices;
 using WebShop.Application.Features.Orders.Commands.Factory;
@@ -50,7 +50,7 @@ namespace WebShop.Application.Features.Orders.Commands
                 factory.DiscountCalculationService = new HappyHourDiscountService();
             }
 
-            Order order = await factory.CreateAsync(request);
+            Order order = await factory.CreateOrderAsync(request);
 
             await _orderRepository.AddAsync(order);
 

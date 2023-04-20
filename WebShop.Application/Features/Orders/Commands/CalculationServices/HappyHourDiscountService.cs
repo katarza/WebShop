@@ -1,14 +1,16 @@
 ﻿using System;
-using WebShop.Application.Contracts.CalculationServices;
+using System.Runtime.CompilerServices;
+using WebShop.Application.Contracts.Services;
 
+[assembly: InternalsVisibleTo("WebShop.Appllication.UnitTests")]
 namespace WebShop.Application.Features.Orders.Commands.CalculationServices
 {
-    public class HappyHourDiscountService : IDiscountCalculationService
+    internal class HappyHourDiscountService : IDiscountCalculationService
     {
         public double GetDiscountPercentage(CreateOrderCommand orderRequest)
         {
             char lastCharacter = orderRequest.CustomerPhone[orderRequest.CustomerPhone.Length - 1];
-            int lastDigit = Convert.ToInt32(lastCharacter);
+            int lastDigit = lastCharacter - '0';
             double discountPercentage = 0;
             if (lastDigit % 2 != 0)
             {

@@ -1,8 +1,8 @@
-﻿using WebShop.Application.Contracts.CalculationServices;
+﻿using WebShop.Application.Contracts.Services;
 
 namespace WebShop.Application.Features.Orders.Commands.CalculationServices
 {
-    public class NoDiscountService : IDiscountCalculationService
+    internal class NoDiscountService : IDiscountCalculationService
     {
         public double GetDiscountPercentage(CreateOrderCommand orderRequest)
         {

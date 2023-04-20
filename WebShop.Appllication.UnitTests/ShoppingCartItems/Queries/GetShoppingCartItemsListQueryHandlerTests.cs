@@ -29,7 +29,7 @@ namespace WebShop.Appllication.UnitTests.ShoppingCartItems.Queries
         }
 
         [Fact]
-        public async Task GetShoppingCartItemsListTest()
+        public async Task Handle_GetShoppingCartItemsListTest_ShouldReturn3Items()
         {
             var handler = new GetShoppingCartItemsListQueryHandler(_mapper, _mockShoppingCartItemRepository.Object, _mockProductRepository.Object);
 
@@ -38,6 +38,16 @@ namespace WebShop.Appllication.UnitTests.ShoppingCartItems.Queries
             result.ShouldBeOfType<List<ShoppingCardItemsListVM>>();
 
             result.Count.ShouldBe(3);
+        }
+
+        [Fact]
+        public async Task Handle_GetShoppingCartItemsListTest_ShouldReturnShoppingCardItemsListVM()
+        {
+            var handler = new GetShoppingCartItemsListQueryHandler(_mapper, _mockShoppingCartItemRepository.Object, _mockProductRepository.Object);
+
+            var result = await handler.Handle(new GetShoppingCartItemsListQuery() { CustomerId = "Katarina" }, CancellationToken.None);
+
+            result.ShouldBeOfType<List<ShoppingCardItemsListVM>>();
         }
     }
 }

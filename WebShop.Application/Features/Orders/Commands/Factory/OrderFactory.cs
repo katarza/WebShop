@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebShop.Application.Contracts.CalculationServices;
+using WebShop.Application.Contracts.Services;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands.CalculationServices;
 using WebShop.Domain.Entities;
@@ -13,7 +13,7 @@ using ValidationException = WebShop.Application.Exceptions.ValidationException;
 
 namespace WebShop.Application.Features.Orders.Commands.Factory
 {
-    public class OrderFactory : IOrderFactory
+    internal class OrderFactory : IOrderFactory
     {
         private readonly IMapper _mapper;
         public IDiscountCalculationService DiscountCalculationService { get; set; }
@@ -28,7 +28,7 @@ namespace WebShop.Application.Features.Orders.Commands.Factory
             DiscountCalculationService = new NoDiscountService();
         }
 
-        public async Task<Order> CreateAsync(CreateOrderCommand createOrderCommand)
+        public async Task<Order> CreateOrderAsync(CreateOrderCommand createOrderCommand)
         {
             var order = new Order();
 

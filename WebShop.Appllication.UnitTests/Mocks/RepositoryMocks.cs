@@ -30,26 +30,27 @@ namespace WebShop.Appllication.UnitTests.Mocks
                     Id = shoppingCartItem1Guid,
                     CustomerId = "Katarina",
                     ProductId = product1Guid,
-                    Quantity = 10
+                    Quantity = 1
                 },
                 new ShoppingCartItem
                 {
                     Id = shoppingCartItem2Guid,
                     CustomerId = "Katarina",
                     ProductId = product2Guid,
-                    Quantity = 17
+                    Quantity = 5
                 },
                 new ShoppingCartItem
                 {
                     Id = shoppingCartItem3Guid,
                     CustomerId = "Katarina",
                     ProductId = product3Guid,
-                    Quantity = 48
+                    Quantity = 1
                 }
             };
 
             var mockShoppingCartItemRepository = new Mock<IShoppingCartItemRepository>();
             mockShoppingCartItemRepository.Setup(repo => repo.ListCustomerCartContent(It.IsAny<string>())).ReturnsAsync(shoppingCartItems);
+            mockShoppingCartItemRepository.Setup(repo => repo.EmptyShoppingCartAsync(It.IsAny<string>())).Callback(new InvocationAction((x) => { shoppingCartItems.Clear(); })).Verifiable() ;
 
             mockShoppingCartItemRepository.Setup(repo => repo.AddAsync(It.IsAny<ShoppingCartItem>())).ReturnsAsync(
                 (ShoppingCartItem shoppingCartItem) =>
@@ -61,6 +62,23 @@ namespace WebShop.Appllication.UnitTests.Mocks
             return mockShoppingCartItemRepository;
         }
 
+        public static Mock<IOrderRepository> GetOrderRepository()
+        {
+            var orders = new List<Order>();
+            var mockOrderRepository = new Mock<IOrderRepository>();
+
+            mockOrderRepository.Setup(repo => repo.AddAsync(It.IsAny<Order>())).ReturnsAsync(
+                (Order order) =>
+                {
+                    orders.Add(order);
+                    return order;
+                });
+
+            mockOrderRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(orders);
+
+            return mockOrderRepository;
+        }
+
         public static Mock<IProductRepository> GetProductRepository()
         {
 
@@ -68,6 +86,13 @@ namespace WebShop.Appllication.UnitTests.Mocks
             var product2Guid = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7C5DDE}");
             var product3Guid = Guid.Parse("{BF3F3002-7E53-441E-8B76-F6280BE284AA}");
 
+            var singleProduct1 = new Product
+            {
+                Id = product1Guid,
+                ProductName = "Test Product 1",
+                QuantityInStock = 50,
+                UnitPrice = 100
+            };
             var products = new List<Product>
             {
                 new Product
@@ -96,7 +121,12 @@ namespace WebShop.Appllication.UnitTests.Mocks
             };
 
             var mockProductRepository = new Mock<IProductRepository>();
-            mockProductRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(products.FirstOrDefault);
+            mockProductRepository.Setup(repo => repo.GetByIdAsync(It.Is<Guid>(x => x == product1Guid))).ReturnsAsync(singleProduct1);
+            mockProductRepository.Setup(repo => repo.GetByIdAsync(It.Is<Guid>(x => x == product2Guid))).ReturnsAsync(products.Where(s => s.Id == product2Guid).FirstOrDefault());
+            mockProductRepository.Setup(repo => repo.GetByIdAsync(It.Is<Guid>(x => x == product3Guid))).ReturnsAsync(products.Where(s => s.Id == product3Guid).FirstOrDefault());
+            mockProductRepository.Setup(repo => repo.ReserveProductQuantityAsync(It.IsAny<Guid>(), It.IsAny<int>()))
+                .Callback((Guid x, int y) => { singleProduct1.QuantityInStock -= Math.Min(y, singleProduct1.QuantityInStock); })
+                .ReturnsAsync((Guid x, int y) => Math.Min(y, singleProduct1.QuantityInStock));
 
             return mockProductRepository;
         }
