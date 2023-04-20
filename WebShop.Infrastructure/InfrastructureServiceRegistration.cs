@@ -13,6 +13,7 @@ namespace WebShop.Infrastructure
 
             services.Configure<SuppliersServiceSettings>(configuration.GetSection("SuppliersServiceSettings"));
             services.AddTransient<ISupplierStockService, SupplierStockService>();
+            services.AddHttpClient();
 
             return services;
         }

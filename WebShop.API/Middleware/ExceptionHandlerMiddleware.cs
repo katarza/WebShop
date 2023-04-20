@@ -9,7 +9,7 @@ namespace WebShop.API.Middleware
 {
     public class ExceptionHandlerMiddleware 
     {
-        private readonly RequestDelegate _next;
+        private readonly RequestDelegate _next; 
 
         public ExceptionHandlerMiddleware(RequestDelegate next)
         {
