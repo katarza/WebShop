@@ -17,9 +17,8 @@ namespace WebShop.Application.Features.Orders.Queries
 
         public double TotalAmount { get; set; }
 
-        public double AppliedDiscount
-        {
-            get; set;
-        }
+        public DateTime CreatedDate { get; set; }
+
+        public double AppliedDiscount { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop.Application.Common.Dates;
 using WebShop.Application.Contracts.CalculationServices;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands.CalculationServices;
@@ -22,15 +23,17 @@ namespace WebShop.Application.Features.Orders.Commands
         private readonly IProductRepository _productRepository;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IDateService _dateService;
         private readonly OrderFactory factory;
 
-        public CreateOrderCommandHandler(IMapper mapper, IOrderRepository orderRepository, IProductRepository productRepository, IShoppingCartItemRepository shoppingCartItemRepository, IUnitOfWork unitOfWork)
+        public CreateOrderCommandHandler(IMapper mapper, IOrderRepository orderRepository, IProductRepository productRepository, IShoppingCartItemRepository shoppingCartItemRepository, IUnitOfWork unitOfWork, IDateService dateService)
         {
             _mapper = mapper;
             _orderRepository = orderRepository;
             _productRepository = productRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
             _unitOfWork = unitOfWork;
+            _dateService = dateService;
             factory = new OrderFactory(_mapper, _shoppingCartItemRepository, _productRepository);
         }
 
@@ -40,7 +43,7 @@ namespace WebShop.Application.Features.Orders.Commands
 
             TimeSpan start = new(16, 0, 0);
             TimeSpan end = new(17, 0, 0);
-            TimeSpan now = DateTime.Now.TimeOfDay;
+            TimeSpan now = _dateService.GetDate().TimeOfDay;
 
             if ((now > start) && (now < end))
             {

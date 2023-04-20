@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using WebShop.Application.Behaviors;
+using WebShop.Application.Common.Dates;
+using WebShop.Application.Contracts.Persistence;
 
 namespace WebShop.Application
 {
@@ -15,6 +17,7 @@ namespace WebShop.Application
 
             var applicationAssembly = typeof(AssemblyReference).Assembly;
             services.AddValidatorsFromAssembly(applicationAssembly);
+            services.AddScoped(typeof(IDateService), typeof(DateService));
 
             return services;
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop.Application.Common.Dates;
 using WebShop.Domain.Common;
 using WebShop.Domain.Entities;
 
@@ -13,9 +14,12 @@ namespace WebShop.Persistence
 {
     public class WebShopDbContext : DbContext
     {
-        public WebShopDbContext(DbContextOptions<WebShopDbContext> options)
+        private IDateService _dateService;
+
+        public WebShopDbContext(DbContextOptions<WebShopDbContext> options, IDateService dateService)
           : base(options)
         {
+            _dateService = dateService;
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
