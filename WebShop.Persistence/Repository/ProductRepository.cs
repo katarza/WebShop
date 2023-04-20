@@ -65,11 +65,33 @@ namespace WebShop.Persistence.Repository
             return Task.FromResult(matches);
         }
 
-        public Task<bool> IsRequiredProductQuantityAvailable(Guid productId, int quantity)
+        public async Task<int> ReserveProductQuantityAsync(Guid ProductId, int Quantity)
         {
-            int quantityInStock = _dbContext.Products.Where(e => e.Id == productId).Select(e => e.QuantityInStock).FirstOrDefault();
-            bool result = quantityInStock >= quantity;
-            return Task.FromResult(result);
+            Product? product = await GetByIdAsync(ProductId);
+
+            int quantityToReserveLocally = 0;
+
+            if (product is not null)
+            {
+
+                if (product.QuantityInStock >= Quantity)
+                {
+                    quantityToReserveLocally = Quantity;
+                }
+                else
+                {
+                    quantityToReserveLocally = product.QuantityInStock;
+                }
+
+                product.QuantityInStock -= quantityToReserveLocally;
+
+                Update(product);
+            }
+
+            return quantityToReserveLocally;
+
+
         }
+
     }
 }

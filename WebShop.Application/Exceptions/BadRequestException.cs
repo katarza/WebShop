@@ -1,8 +1,8 @@
 ﻿namespace WebShop.Application.Exceptions
 {
-    public class BadRequestException : Exception
+    public class BadRequestException : ApplicationException
     {
-        public BadRequestException(string message) : base(message)
+        public BadRequestException(string message) : base("Bad Request", message)
         {
 
         }

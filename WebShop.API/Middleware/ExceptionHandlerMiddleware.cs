@@ -1,10 +1,13 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Http;
+using System.Net;
 using System.Text.Json;
 using WebShop.Application.Exceptions;
+using ApplicationException = WebShop.Application.Exceptions.ApplicationException;
+using ValidationException = WebShop.Application.Exceptions.ValidationException;
 
 namespace WebShop.API.Middleware
 {
-    public class ExceptionHandlerMiddleware
+    public class ExceptionHandlerMiddleware 
     {
         private readonly RequestDelegate _next;
 
@@ -27,38 +30,49 @@ namespace WebShop.API.Middleware
 
         private Task ConvertException(HttpContext context, Exception exception)
         {
-            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
+            var statusCode = GetStatusCode(exception);
+
+            var response = new
+            {
+                title = GetTitle(exception),
+                status = statusCode,
+                detail = exception.Message,
+                errors = GetErrors(exception)
+            };
 
             context.Response.ContentType = "application/json";
 
-            var result = string.Empty;
+            context.Response.StatusCode = statusCode;
 
-            switch (exception)
+            return context.Response.WriteAsync(JsonSerializer.Serialize(response));
+        }
+
+        private static string GetTitle(Exception exception) =>
+            exception switch
             {
-                case ValidationException validationException:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    result = JsonSerializer.Serialize(validationException.ValdationErrors);
-                    break;
-                case BadRequestException badRequestException:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    result = badRequestException.Message;
-                    break;
-                case NotFoundException:
-                    httpStatusCode = HttpStatusCode.NotFound;
-                    break;
-                case Exception:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    break;
+                ApplicationException applicationException => applicationException.Title,
+                _ => "Server Error"
+            };
+
+        private static int GetStatusCode(Exception exception) =>
+            exception switch
+            {
+                BadRequestException => StatusCodes.Status400BadRequest,
+                NotFoundException => StatusCodes.Status404NotFound,
+                ValidationException => StatusCodes.Status422UnprocessableEntity,
+                _ => StatusCodes.Status500InternalServerError
+            };
+
+        private static IReadOnlyDictionary<string, string[]> GetErrors(Exception exception)
+        {
+            IReadOnlyDictionary<string, string[]> errors = null;
+
+            if (exception is ValidationException validationException)
+            {
+                errors = validationException.ErrorsDictionary;
             }
 
-            context.Response.StatusCode = (int)httpStatusCode;
-
-            if (result == string.Empty)
-            {
-                result = JsonSerializer.Serialize(new { error = exception.Message });
-            }
-
-            return context.Response.WriteAsync(result);
+            return errors;
         }
     }
 }

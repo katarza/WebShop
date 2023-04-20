@@ -20,6 +20,8 @@ namespace WebShop.Persistence
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IShoppingCartItemRepository), typeof(ShoppingCartItemsRepository));
             services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
+            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
             return services;
         }

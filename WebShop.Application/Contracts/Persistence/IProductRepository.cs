@@ -11,7 +11,7 @@ namespace WebShop.Application.Contracts.Persistence
     {
         Task<bool> DoesProductIdExist(Guid productId);
 
-        Task<bool> IsRequiredProductQuantityAvailable(Guid productId, int quantity);
+        Task<int> ReserveProductQuantityAsync(Guid ProductId, int Quantity);
 
     }
 }

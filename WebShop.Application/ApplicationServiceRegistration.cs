@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using WebShop.Application.Behaviors;
 
 namespace WebShop.Application
 {
@@ -9,6 +11,10 @@ namespace WebShop.Application
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+            var applicationAssembly = typeof(AssemblyReference).Assembly;
+            services.AddValidatorsFromAssembly(applicationAssembly);
 
             return services;
         }

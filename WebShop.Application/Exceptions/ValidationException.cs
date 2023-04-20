@@ -1,19 +1,12 @@
-﻿using FluentValidation.Results;
-
+﻿
 namespace WebShop.Application.Exceptions
 {
-    public class ValidationException : Exception
+    public sealed class ValidationException : ApplicationException
     {
-        public List<string> ValdationErrors { get; set; }
+        public ValidationException(IReadOnlyDictionary<string, string[]> errorsDictionary)
+            : base("Validation Failure", "One or more validation errors occurred")
+            => ErrorsDictionary = errorsDictionary;
 
-        public ValidationException(ValidationResult validationResult)
-        {
-            ValdationErrors = new List<string>();
-
-            foreach (var validationError in validationResult.Errors)
-            {
-                ValdationErrors.Add(validationError.ErrorMessage);
-            }
-        }
+        public IReadOnlyDictionary<string, string[]> ErrorsDictionary { get; }
     }
 }

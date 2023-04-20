@@ -8,7 +8,7 @@ namespace WebShop.Domain.Entities
 
         public string CustomerId { get; set; } = string.Empty;
 
-        public Address CustomerAddress { get; set; } = new Address();
+        public Address ShippingAddress { get; set; } = new Address();
 
         public string CustomerPhone { get; set; } = string.Empty;
 

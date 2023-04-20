@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using WebShop.Domain.Common;
@@ -21,6 +22,13 @@ namespace WebShop.Persistence
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "WebShopDb");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .OwnsOne(x => x.ShippingAddress);
+        }
+
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public DbSet<Order> Orders { get; set; }

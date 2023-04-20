@@ -14,7 +14,7 @@ namespace WebShop.API
             AddSwagger(builder.Services);
 
             builder.Services.AddApplicationServices();
-            builder.Services.AddInfrastructureServices();
+            builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices();
 
             builder.Services.AddHttpContextAccessor();
