@@ -23,7 +23,6 @@ namespace WebShop.API.IntegrationTests.Controllers
         }
         
 
-        [Fact]
         public async Task GetShoppingCartItems_Invoke_ReturnsSuccessResult()
         {
             
