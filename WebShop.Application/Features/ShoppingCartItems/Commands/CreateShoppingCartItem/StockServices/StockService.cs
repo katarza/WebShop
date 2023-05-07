@@ -31,7 +31,7 @@ namespace WebShop.Application.Features.ShoppingCartItems.Commands.CreateShopping
 
         public async Task ReserveProductQuantityAsync(ShoppingCartItem shoppingCartItem)
         {
-            int reservedOnLocalStock = await reserveProductQuamtityOnLocalStock(shoppingCartItem);
+            int reservedOnLocalStock = await reserveProductQuantityOnLocalStock(shoppingCartItem);
 
             if (reservedOnLocalStock < shoppingCartItem.Quantity)
             {
@@ -63,7 +63,7 @@ namespace WebShop.Application.Features.ShoppingCartItems.Commands.CreateShopping
             }
         }
 
-        private async Task<int> reserveProductQuamtityOnLocalStock(ShoppingCartItem shoppingCartItem)
+        private async Task<int> reserveProductQuantityOnLocalStock(ShoppingCartItem shoppingCartItem)
         {
             return await _productRepository.ReserveProductQuantityAsync(shoppingCartItem.ProductId, shoppingCartItem.Quantity);
         }
