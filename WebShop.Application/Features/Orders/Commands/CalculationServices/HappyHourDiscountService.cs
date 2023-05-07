@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using WebShop.Application.Contracts.Services;
 
 [assembly: InternalsVisibleTo("WebShop.Appllication.UnitTests")]

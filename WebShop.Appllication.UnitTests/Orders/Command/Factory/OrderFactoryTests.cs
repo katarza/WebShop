@@ -1,12 +1,5 @@
 ﻿using AutoMapper;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands;
 using WebShop.Application.Features.Orders.Commands.CalculationServices;

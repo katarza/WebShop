@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebShop.Application.Features.Orders.Commands;
 using WebShop.Application.Features.Orders.Queries;
-using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem;
-using WebShop.Application.Features.ShoppingCartItems.Queries.GetShoppingCartItemsList;
 
 namespace WebShop.API.Controllers
 {

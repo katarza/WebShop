@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using WebShop.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 namespace WebShop.API.IntegrationTests.Base
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebShop.Application.Exceptions
+﻿namespace WebShop.Application.Exceptions
 {
     public abstract class ApplicationException : Exception
     {

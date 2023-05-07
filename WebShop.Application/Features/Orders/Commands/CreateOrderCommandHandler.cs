@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebShop.Application.Common.Dates;
-using WebShop.Application.Contracts.Services;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands.CalculationServices;
 using WebShop.Application.Features.Orders.Commands.Factory;
-using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem;
-using WebShop.Application.Features.ShoppingCartItems.Queries.GetShoppingCartItemsList;
 using WebShop.Domain.Entities;
 
 namespace WebShop.Application.Features.Orders.Commands

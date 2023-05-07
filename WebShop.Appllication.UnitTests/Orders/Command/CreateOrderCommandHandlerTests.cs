@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.VisualBasic;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebShop.Application.Common.Dates;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.Orders.Commands;

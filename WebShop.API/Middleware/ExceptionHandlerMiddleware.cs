@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Net;
-using System.Text.Json;
+﻿using System.Text.Json;
 using WebShop.Application.Exceptions;
 using ApplicationException = WebShop.Application.Exceptions.ApplicationException;
 using ValidationException = WebShop.Application.Exceptions.ValidationException;

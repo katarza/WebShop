@@ -1,16 +1,8 @@
 ﻿using AutoMapper;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebShop.Application.Common.Dates;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Contracts.Services;
-using WebShop.Application.Features.Orders.Commands;
 using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem;
-using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem.StockServices;
 using WebShop.Application.Profiles;
 using WebShop.Appllication.UnitTests.Mocks;
 using WebShop.Domain.Entities;

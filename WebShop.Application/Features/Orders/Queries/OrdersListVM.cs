@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebShop.Application.Features.Orders.Commands;
-
-namespace WebShop.Application.Features.Orders.Queries
+﻿namespace WebShop.Application.Features.Orders.Queries
 {
     public class OrdersListVM
     {

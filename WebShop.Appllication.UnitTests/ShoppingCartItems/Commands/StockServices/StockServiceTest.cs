@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebShop.Application.Contracts.Infrastructure;
 using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Exceptions;

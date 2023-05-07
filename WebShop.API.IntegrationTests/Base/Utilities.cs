@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebShop.Domain.Entities;
+﻿using WebShop.Domain.Entities;
 using WebShop.Persistence;
 
 namespace WebShop.API.IntegrationTests.Base

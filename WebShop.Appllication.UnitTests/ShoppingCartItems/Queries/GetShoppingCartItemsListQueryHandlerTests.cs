@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EmptyFiles;
 using Moq;
 using WebShop.Application.Contracts.Persistence;
 using Shouldly;
