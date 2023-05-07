@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using WebShop.Application.Contracts.Persistence;
-using WebShop.Domain.Entities;
 
 namespace WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem
 {

@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
 using WebShop.Application.Contracts.Services;
-using WebShop.Application.Contracts.Infrastructure;
 using WebShop.Application.Contracts.Persistence;
-using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem.StockServices;
-using WebShop.Application.Models.SuppliersService;
 using WebShop.Domain.Entities;
 
 

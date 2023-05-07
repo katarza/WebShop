@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using WebShop.Application.Behaviors;
 using WebShop.Application.Common.Dates;
 using WebShop.Application.Contracts.Services;
-using WebShop.Application.Contracts.Persistence;
 using WebShop.Application.Features.ShoppingCartItems.Commands.CreateShoppingCartItem.StockServices;
 
 namespace WebShop.Application
@@ -16,9 +15,7 @@ namespace WebShop.Application
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
-            var applicationAssembly = typeof(AssemblyReference).Assembly;
-            services.AddValidatorsFromAssembly(applicationAssembly);
+            services.AddValidatorsFromAssembly(typeof(AssemblyReference).Assembly);
             services.AddScoped(typeof(IDateService), typeof(DateService));
             services.AddScoped(typeof(IStockService), typeof(StockService));
 

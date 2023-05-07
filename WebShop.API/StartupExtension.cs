@@ -3,7 +3,6 @@ using WebShop.Persistence;
 using WebShop.Infrastructure;
 using Microsoft.OpenApi.Models;
 using WebShop.API.Middleware;
-using Microsoft.AspNetCore.HttpLogging;
 
 namespace WebShop.API
 {
@@ -44,8 +43,6 @@ namespace WebShop.API
             }
 
             app.UseHttpsRedirection();
-
-            //app.UseRouting();
 
             app.UseAuthentication();
 
