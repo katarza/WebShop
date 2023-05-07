@@ -32,15 +32,8 @@ namespace WebShop.Application.Features.Orders.Commands
         public async Task<CreateOrderCommandResponse> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             var createOrderCommandResponse = new CreateOrderCommandResponse();
-
-            TimeSpan start = new(16, 0, 0);
-            TimeSpan end = new(17, 0, 0);
-            TimeSpan now = _dateService.GetDate().TimeOfDay;
-
-            if ((now > start) && (now < end))
-            {
-                factory.DiscountCalculationService = new HappyHourDiscountService();
-            }
+            
+            determineDiscount();
 
             Order order = await factory.CreateOrderAsync(request);
 
@@ -50,12 +43,22 @@ namespace WebShop.Application.Features.Orders.Commands
 
             await _unitOfWork.SaveChangesAsync();
 
-            OrderDTO orderDTO = _mapper.Map<OrderDTO>(order);
-
-            createOrderCommandResponse.Order = orderDTO;
+            createOrderCommandResponse.Order = _mapper.Map<OrderDTO>(order);
 
             return createOrderCommandResponse;
 
+        }
+
+        private void determineDiscount()
+        {
+            TimeSpan start = new(16, 0, 0);
+            TimeSpan end = new(17, 0, 0);
+            TimeSpan now = _dateService.GetDate().TimeOfDay;
+
+            if ((now > start) && (now < end))
+            {
+                factory.DiscountCalculationService = new HappyHourDiscountService();
+            }
         }
     }
 }
